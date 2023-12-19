@@ -192,14 +192,8 @@ a). ดัมโครงสร้างฐานข้อมูลเปล่�
 b). ดัมฐานข้อมูล
 
 ```bash
-./dump.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
+./dump_sql.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
 ```
-
-
-
-
-
-
 
 ### ปรับ my.cnf ก่อน Import
 
@@ -210,4 +204,24 @@ innodb_log_file_size = 1G
 innodb_write_io_threads = 16
 innodb_flush_log_at_trx_commit = 0
 ```
+
+## Import to Mysql
+ต้องอยู่ในตำแหน่งโฟลเดอร์ที่มีไฟล์ import.py 
+
+a). นำเข้าโครงสร้างฐานข้อมูลเปล่าๆ
+
+```bash
+./import_struc.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+```
+
+b). นำเข้าฐานข้อมูล
+```bash
+./import_sql.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+```
+
+
+
+
+
+
 
