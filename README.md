@@ -220,8 +220,21 @@ b). นำเข้าฐานข้อมูล
 ```
 
 
+โครงสร้างไฟล์ในวันนี้
+```bash
+.
+├── README.md
+├── dump_sql
+│   └── dump_sql.py
+├── dump_struc
+│   └── dump_struc.py
+├── import_sql
+│   └── import_sql.py
+├── import_struc
+│   └── import_struc.py
+└── linux-commands-cheat-sheet-pdf.pdf
 
-
-
+4 directories, 6 files
+```
 
 
