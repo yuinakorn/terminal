@@ -89,6 +89,7 @@ mysql --version
 sudo mysql_secure_installation
 ```
 
+#### ตัวอย่างการตั้งค่า mysql secure ไม่ต้องก๊อปไปรัน
 ```bash
 Enter current password for root (enter for none):
 OK, successfully used password, moving on...
