@@ -2,6 +2,8 @@
 
 https://www.virtualbox.org/
 
+เซ็ต network ให้เป็น bridge เพื่อให้เราสามารถเข้าถึงเครื่องจำลองได้
+
 ## ติดตั้ง Oracle Linux 8.9
 
 
@@ -62,57 +64,98 @@ p10k configure
 
 ## ติดตั้ง mariadb
 
-a) Add the MariaDB Yum Repository:
-
-There are two ways to do this:
-
-Using the MariaDB Package Repository Setup Script:
-Download the script:
-```bash 
-wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-```
-
-Make it executable:
-```bash 
-chmod +x mariadb_repo_setup
-```
-Run the script, specifying the desired MariaDB version (10.1.48 in your case):
-```bash
-./mariadb_repo_setup --mariadb-server-version=10.1.48
-```
-Manually configuring the repository:
-Create a file named /etc/yum.repos.d/mariadb.repo with the following content:
 
 ```bash
-[mariadb]
-name=MariaDB 10.1 Repository
-baseurl=https://yum.mariadb.com/10.1/linux-x86_64/
-gpgkey=https://yum.mariadb.com/MariaDB-GPG-KEY
-gpgcheck=yes
-enabled=yes
-
-[mariadb-10.1-compat]
-name=MariaDB 10.1 Compatibility Repository
-baseurl=https://yum.mariadb.com/10.1/compat-linux-x86_64/
-gpgkey=https://yum.mariadb.com/MariaDB-GPG-KEY
-gpgcheck=yes
-enabled=yes
+yum install mariadb-server mariadb-devel mariadb-test mariadb-backup -y
 ```
 
-b) Install MariaDB:
+**รันทีละคำสั่ง**
 
-Update your package list:
-```bash 
-sudo dnf update
-```
-Install the MariaDB server package:
 ```bash
-sudo dnf install mariadb-server
+sudo systemctl start mariadb
+sudo systemctl status mariadb
+sudo systemctl enable mariadb
+```
+
+**เช็ค version**
+
+```bash
+mysql --version
+```
+
+**ตั้งค่า mysql secure**
+
+```bash
+sudo mysql_secure_installation
 ```
 
 ```bash
-yum install mariadb-server mariadb-devel mariadb-test mariadb-backup
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] n
+ ... skipping.
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
 ```
+
+เข้าไปใน mysql สร้าง user "adminit" 
+
+```bash
+mysql -u root -p
+```
+
+
+```bash
+CREATE USER 'adminit'@'%' IDENTIFIED BY '123456';
+```
+
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'adminit'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+```
+
+
 
 ## ติดตั้ง python3.9
 
@@ -130,3 +173,9 @@ python3.9 --version
 ```bash
 pip3.9 install progressbar2 mysql-connector
 ```
+
+**เช็ค package ที่ติดตั้งแล้ว**
+```bash
+pip3.9 freeze
+```
+
