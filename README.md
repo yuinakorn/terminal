@@ -180,3 +180,34 @@ pip3.9 install progressbar2 mysql-connector
 pip3.9 freeze
 ```
 
+---
+## Mysql Dump
+
+a). ดัมโครงสร้างฐานข้อมูลเปล่าๆ
+
+```bash
+./dump_struc.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
+```
+
+b). ดัมฐานข้อมูล
+
+```bash
+./dump.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
+```
+
+
+
+
+
+
+
+### ปรับ my.cnf ก่อน Import
+
+```bash
+innodb_buffer_pool_size = 4G
+innodb_log_buffer_size = 256M
+innodb_log_file_size = 1G
+innodb_write_io_threads = 16
+innodb_flush_log_at_trx_commit = 0
+```
+
