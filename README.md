@@ -1,3 +1,13 @@
+## ติดตั้ง virtualbox
+
+https://www.virtualbox.org/
+
+## ติดตั้ง Oracle Linux 8.9
+
+
+---
+
+
 เตรียม terminal ก่อน 
 ติดตั้ง zsh
 
@@ -47,3 +57,29 @@ https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 วีธีเปลี่ยน style อีกครั้ง
 p10k configure
+
+---
+
+## ติดตั้ง mariadb
+
+
+```bash
+yum install mariadb-server mariadb-devel mariadb-test mariadb-backup
+```
+
+## ติดตั้ง python3.9
+
+
+```bash
+sudo dnf module install python39
+```
+
+```bash
+python3.9 --version
+```
+
+### ติดตั้ง progressbar2 และ mysql-connector ของ python3.9
+
+```bash
+pip3.9 install progressbar2 mysql-connector
+```
