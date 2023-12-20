@@ -240,3 +240,20 @@ b). นำเข้าฐานข้อมูล
 
 
 
+
+## ปิด selinux
+
+```bash
+vim /etc/selinux/config
+```
+
+แก้ไข เป็น
+```bash
+SELINUX=disabled
+```
+
+```bash
+service firewalld stop
+chkconfig firewalld off
+```
+
