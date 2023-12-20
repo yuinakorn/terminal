@@ -204,7 +204,7 @@ pip3.9 freeze
 a). ดัมโครงสร้างฐานข้อมูลเปล่าๆ
 
 ```bash
-./dump_struc.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
+./dump_struc.py -i 192.168.200.27 -P 3306 -b hos -u admin -p 1234
 ```
 
 b). ดัมฐานข้อมูล
