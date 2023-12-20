@@ -255,7 +255,7 @@ SELINUX=disabled
 **ออกจาก vim แล้ว รันคำสั่งนี้ที่ command line**
 
 ```bash
-service firewalld stop
-chkconfig firewalld off
+sudo service firewalld stop
+sudo chkconfig firewalld off
 ```
 
