@@ -247,10 +247,12 @@ b). นำเข้าฐานข้อมูล
 vim /etc/selinux/config
 ```
 
-แก้ไข เป็น
+**แก้ไข ในไฟล์เป็น**
 ```bash
 SELINUX=disabled
 ```
+
+**ออกจาก vim แล้ว รันคำสั่งนี้ที่ command line**
 
 ```bash
 service firewalld stop
