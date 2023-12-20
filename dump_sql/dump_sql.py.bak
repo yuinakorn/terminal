@@ -62,6 +62,9 @@ def run(command,tablename):
     p = Popen(command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
     output = p.stdout.read()
     bar.Update()
+    if len(output) > 0:
+        with open("/tmp/dump.txt", "a") as myfile:
+            myfile.write(output + " : " + tablename )
 
 def worker(queue):
     for args in iter(queue.get, None):
