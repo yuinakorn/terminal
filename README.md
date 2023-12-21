@@ -259,3 +259,10 @@ sudo service firewalld stop
 sudo chkconfig firewalld off
 ```
 
+
+### คำสั่งค้นหาไฟล์ที่มีขนาดใหญ่กว่า 10M
+
+
+```bash
+find . -type f -size +10M -exec mv "{}" new_folder/ \;
+```
