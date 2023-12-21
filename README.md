@@ -264,5 +264,6 @@ sudo chkconfig firewalld off
 
 
 ```bash
+mkdir new_folder
 find . -type f -size +10M -exec mv "{}" new_folder/ \;
 ```
