@@ -202,12 +202,14 @@ pip3.9 freeze
 ## Mysql Dump
 
 a). ดัมโครงสร้างฐานข้อมูลเปล่าๆ
+โดย cd เข้าไปที่โฟลเดอร์ dump_struc 
 
 ```bash
 ./dump_struc.py -i <IP_MASTER> -P 3306 -b hos -u <USER> -p <PASSWORD>
 ```
 
-b). ดัมฐานข้อมูล
+b). ดัมฐานข้อมูลจริง
+cd เข้าไปที่โฟลเดอร์ dump_sql
 
 ```bash
 ./dump_sql.py -i <IP_MASTER> -u <USER> -p <PASSWORD> -P 3306 -b hos -m mysqldump -c true -l true -a false
@@ -219,7 +221,10 @@ b). ดัมฐานข้อมูล
 innodb_buffer_pool_size = 4G
 innodb_log_buffer_size = 256M
 innodb_log_file_size = 1G
+# จำนวน theads
 innodb_write_io_threads = 16
+# set เป็น 0 เมื่อจะ import ข้อมูล
+# set เป็น 1 เมื่อ import เสร็จแล้ว
 innodb_flush_log_at_trx_commit = 0
 ```
 
@@ -227,14 +232,17 @@ innodb_flush_log_at_trx_commit = 0
 ต้องอยู่ในตำแหน่งโฟลเดอร์ที่มีไฟล์ import.py 
 
 a). นำเข้าโครงสร้างฐานข้อมูลเปล่าๆ
-
+โดย cd เข้าไปที่โฟลเดอร์ dump_struc 
 ```bash
-./import_struc.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+./import_struc.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
 ```
 
-b). นำเข้าฐานข้อมูล
+
+b). นำเข้าฐานข้อมูลจริง
+cd เข้าไปที่โฟลเดอร์ dump_sql
+
 ```bash
-./import_sql.py -i <IP_ADDR> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+./import_sql.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
 ```
 
 
