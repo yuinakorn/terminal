@@ -67,16 +67,14 @@ p10k configure
 .
 ├── README.md
 ├── dump_sql
-│   └── dump_sql.py
-├── dump_struc
-│   └── dump_struc.py
-├── import_sql
+│   ├── dump_sql.py
 │   └── import_sql.py
-├── import_struc
+├── dump_struc
+│   ├── dump_struc.py
 │   └── import_struc.py
 └── linux-commands-cheat-sheet-pdf.pdf
 
-4 directories, 6 files
+2 directories, 6 files
 ```
 
 
@@ -107,7 +105,7 @@ mysql --version
 sudo mysql_secure_installation
 ```
 
-#### ตัวอย่างการตั้งค่า mysql secure ไม่ต้องก๊อปไปรัน
+#### ตัวอย่างการตั้งค่า mysql secure ดูคำตอบ Y หรือ N ตรงไหนบ้าง  !ไม่ต้องก๊อปไปรัน
 ```bash
 Enter current password for root (enter for none):
 OK, successfully used password, moving on...
