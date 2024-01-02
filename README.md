@@ -225,12 +225,15 @@ innodb_flush_log_at_trx_commit = 0  # set เป็น 0 เมื่อจะ i
 ```
 
 ## Import to Mysql
-ต้องอยู่ในตำแหน่งโฟลเดอร์ที่มีไฟล์ import.py 
+ต้องอยู่ในตำแหน่งโฟลเดอร์ที่มีไฟล์ import.py   
+
+*New Options* -t [ --threads ] default 100 threads  
+เพิ่ม option ใหม่ -t 100 / 20 / 10 
 
 a). นำเข้าโครงสร้างฐานข้อมูลเปล่าๆ
 โดย cd เข้าไปที่โฟลเดอร์ dump_struc 
 ```bash
-./import_struc.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+./import_struc.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -t 100 -d ./
 ```
 
 
@@ -238,7 +241,7 @@ b). นำเข้าฐานข้อมูลจริง
 cd เข้าไปที่โฟลเดอร์ dump_sql
 
 ```bash
-./import_sql.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -d ./
+./import_sql.py -i <IP_SLAVE> -u <USER> -p <PASSWORD> -P 3306 -b hos -c mysql -t 100 -d ./
 ```
 
 
