@@ -32,10 +32,7 @@ character_set = "tis620"
 def run(command,filename):
     p = Popen(command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
     output = p.stdout.read()
-    if len(output) > 0:
-        with open("/tmp/dump.txt", "a") as myfile:
-            myfile.write(output + " : " + filename )
-
+    
 def worker(queue):
     for args in iter(queue.get, None):
         try:
@@ -49,7 +46,8 @@ def read_table():
     q = Queue()
     conn = mysql.connector.connect (user=mysql_user, password=mysql_pwd,host=mysql_host,buffered=True,database=mysql_db)
     cursor = conn.cursor()
-    cursor.execute("select TABLE_NAME from information_schema.`TABLES` where TABLE_SCHEMA='hos';")
+    command = "select TABLE_NAME from information_schema.`TABLES` where TABLE_SCHEMA='%s';" %(mysql_db)
+    cursor.execute(command)
     records = cursor.fetchall()
     for row in records:
         command = "mysqldump -h %s -u %s -p%s --default-character-set=%s -d --compact --add-drop-table --skip-lock-tables --extended-insert=true -P %s %s %s > %s.sql" %(mysql_host,mysql_user,mysql_pwd,character_set,mysql_port,mysql_db,row[0],row[0])

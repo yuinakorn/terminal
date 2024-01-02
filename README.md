@@ -219,11 +219,9 @@ cd เข้าไปที่โฟลเดอร์ dump_sql
 innodb_buffer_pool_size = 4G
 innodb_log_buffer_size = 256M
 innodb_log_file_size = 1G
-# จำนวน theads
-innodb_write_io_threads = 16
-# set เป็น 0 เมื่อจะ import ข้อมูล
-# set เป็น 1 เมื่อ import เสร็จแล้ว
-innodb_flush_log_at_trx_commit = 0
+
+innodb_write_io_threads = 16        # จำนวน theads
+innodb_flush_log_at_trx_commit = 0  # set เป็น 0 เมื่อจะ import ข้อมูล / set เป็น 1 เมื่อ import เสร็จแล้ว
 ```
 
 ## Import to Mysql
@@ -270,4 +268,18 @@ sudo chkconfig firewalld off
 ```bash
 mkdir new_folder
 find . -type f -size +10M -exec mv "{}" new_folder/ \;
+```
+
+## การทำ Mysql replacation   
+สิ่งที่ต้องเตรียม   
+mysql version ที่แนะนำ mariadb-10.1.xx   
+แก้ไข my.cnf โดยใช้คำสั่ง
+
+```bash
+nano /etc/my.cnf
+```
+
+เพิ่ม config ดังต่อไปนี้
+```bash
+
 ```

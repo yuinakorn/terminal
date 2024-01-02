@@ -27,6 +27,9 @@ parser.add_option("-b","--database",dest="database",
 parser.add_option("-c","--command",dest="command",
                   help="mysql or mariadb import commmand",
                   default="mysql")
+parser.add_option("-t","--threads",dest="threads",
+                  help="threads import default set 100 threads",
+                  default="100")
 
 (options, args) = parser.parse_args()
 
@@ -77,7 +80,7 @@ def start_process():
 
     bar.setmax(count)
 
-    threads = [Thread(target=worker, args=(q,)) for _ in range(100)]
+    threads = [Thread(target=worker, args=(q,)) for _ in range(options.threads)]
     for t in threads:
         t.daemon = True  # threads die if the program dies
         t.start()
