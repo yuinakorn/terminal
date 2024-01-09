@@ -80,7 +80,7 @@ def start_process():
 
     bar.setmax(count)
 
-    threads = [Thread(target=worker, args=(q,)) for _ in range(options.threads)]
+    threads = [Thread(target=worker, args=(q,)) for _ in range(int(options.threads))]
     for t in threads:
         t.daemon = True  # threads die if the program dies
         t.start()
